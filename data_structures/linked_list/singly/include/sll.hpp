@@ -21,7 +21,12 @@ class SLinkedList{
         SLinkedListNode* insert_tail(SLinkedListNode* head, int data);
         SLinkedListNode* insert_head(SLinkedListNode* head, int data);
         SLinkedListNode* insert_position(SLinkedListNode* head, int data, int position);
+        SLinkedListNode* delete_head(SLinkedListNode* head);
+        SLinkedListNode* delete_tail(SLinkedListNode* head);
         SLinkedListNode* delete_node(SLinkedListNode* head, int position);
+        void reverse_ll();
+        int get_size(SLinkedListNode* head);
+        SLinkedListNode* make_unique(SLinkedListNode* head);
 };
 
 #endif

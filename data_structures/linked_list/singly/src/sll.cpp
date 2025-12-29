@@ -1,6 +1,6 @@
 #include "../include/sll.hpp"
+#include <unordered_set>
 #include <iostream>
-
 using namespace std;
 
 SLinkedListNode::SLinkedListNode(int node_data) {
@@ -75,6 +75,24 @@ SLinkedListNode* SLinkedList::insert_position(SLinkedListNode* head, int data, i
     return new_node;
 }
 
+SLinkedListNode* SLinkedList::delete_head(SLinkedListNode* head){
+    SLinkedListNode* remove = head;
+    head = head->next;
+    delete remove;
+    return head;
+}
+
+SLinkedListNode* SLinkedList::delete_tail(SLinkedListNode* head){
+    while (head->next != nullptr){
+        if (head->next->next == nullptr){
+            head->next = nullptr;
+            return head;
+        }
+        head = head->next;
+    }
+    return head;
+}
+
 SLinkedListNode* SLinkedList::delete_node(SLinkedListNode* head, int position){
     if (head == nullptr){
         return head;
@@ -85,7 +103,7 @@ SLinkedListNode* SLinkedList::delete_node(SLinkedListNode* head, int position){
         delete temp;
         return head;
     }
-     SLinkedListNode* curr = head;
+    SLinkedListNode* curr = head;
 
     for (int i = 0; i < position - 1 && curr->next != nullptr; i++) {
         curr = curr->next;
@@ -99,3 +117,51 @@ SLinkedListNode* SLinkedList::delete_node(SLinkedListNode* head, int position){
 
     return head;
 }
+
+void SLinkedList::reverse_ll(){
+    SLinkedListNode* prev = nullptr;
+    SLinkedListNode* curr = head;
+    SLinkedListNode* next_node = nullptr;
+
+    tail = head;
+
+    while(curr != nullptr){
+        next_node = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next_node;
+    }
+    head = prev;
+}
+
+int SLinkedList::get_size(SLinkedListNode* head){
+    int size = 0;
+    while (head != nullptr){
+        size++;
+        head = head->next;
+    }
+    return size;
+}
+
+SLinkedListNode* SLinkedList::make_unique(SLinkedListNode* head){
+    if (!head) return nullptr;
+
+    unordered_set<int> seen;
+    SLinkedListNode* curr = head;
+
+    seen.insert(curr->data);
+
+    while (curr->next != nullptr) {
+        if (seen.count(curr->next->data)) {
+            SLinkedListNode* temp = curr->next;
+            curr->next = temp->next;
+            delete temp;
+        } 
+        else {
+            seen.insert(curr->next->data);
+            curr = curr->next;
+        }
+    }
+    return head;
+}
+

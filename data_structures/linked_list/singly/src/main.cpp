@@ -14,7 +14,12 @@ int main(){
         cout << "3. insert node at tail" << endl;
         cout << "4. insert node at head" << endl;
         cout << "5. insert node at position" << endl;
-        cout << "6. delete node at position" << endl;
+        cout << "6. delete node at head" << endl;
+        cout << "7. delete node at tail" << endl;
+        cout << "8. delete node at position" << endl;
+        cout << "9. reverse linked list" << endl;
+        cout << "10. get size of linked list" << endl;
+        cout << "11. make linked list unique" << endl;
         cout << "0. end program" << endl;
         cout << "===========================" << endl;
         cin >> option;
@@ -55,10 +60,26 @@ int main(){
             llist->insert_position(llist->head, data, position);
         }
         else if(option == 6){
+            llist->delete_head(llist->head);
+        }
+        else if(option == 7){
+            llist->delete_tail(llist->head);
+        }
+        else if(option == 8){
             int position;
             cout << "enter position: ";
             cin >> position;
             llist->delete_node(llist->head, position);
+        }
+        else if(option == 9){
+            llist->reverse_ll();
+        }
+        else if(option == 10){
+            int size = llist->get_size(llist->head);
+            cout << "size of linked list: " << size << endl;
+        }
+        else if(option == 11){
+            llist->make_unique(llist->head);
         }
         else if(option == 0){
             cont = false;
