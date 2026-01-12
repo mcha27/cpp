@@ -3,16 +3,16 @@
 #include <mutex>
 using namespace std;
 
-int global_resource = 10000;
+int global_resource = 0;
 
 mutex m;
 
 void task() {
-    while (true) {
-        lock_guard<mutex> lock(m);
-        if (global_resource == 0) break;
-        global_resource--;
+    m.lock();
+    for(int i = 0; i < 1000000; i++){
+        global_resource++;
     }
+    m.unlock();
 }
 
 int main() {

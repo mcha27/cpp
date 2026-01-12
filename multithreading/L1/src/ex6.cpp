@@ -2,11 +2,11 @@
 #include <thread>
 using namespace std;
 
-int global_resource = 10000;
+int global_resource = 0;
 
 void task() {
-    while (global_resource > 0) {
-        global_resource--;
+    for(int i = 0; i < 1000000; i++){
+        global_resource++;
     }
 }
 

@@ -1,0 +1,41 @@
+# =========================
+# Build directories
+# =========================
+/build/
+/cmake-build-*/
+out/
+
+# =========================
+# CMake generated files
+# =========================
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+compile_commands.json
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+*.code-workspace
+
+# =========================
+# Linux / C++
+# =========================
+*.o
+*.a
+*.so
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Secrets / local config
+# =========================
+.env
+.env.*
+config.local.*
+secrets.*
